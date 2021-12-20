@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameColumnIndexToIndexNumberInStudentsTable extends Migration
+class ChangeColumnMarkDataTypeInGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class RenameColumnIndexToIndexNumberInStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->renameColumn('index', 'index_number');
+        Schema::table('grades', function (Blueprint $table) {
+            $table->integer('mark')->change();
         });
     }
 
@@ -25,8 +25,8 @@ class RenameColumnIndexToIndexNumberInStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->renameColumn('index_number', 'index');
+        Schema::table('grades', function (Blueprint $table) {
+            $table->string('mark')->change();
         });
     }
 }

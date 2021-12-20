@@ -26,7 +26,7 @@ class AddColumnSemesterInExamsTable extends Migration
     public function down()
     {
         Schema::table('exams', function (Blueprint $table) {
-            //
+            $table->dropColumn('semester');
         });
     }
 }

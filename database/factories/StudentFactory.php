@@ -14,7 +14,9 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'index_number' => $this->faker->numberBetween(1, 1200).'/'.$this->faker->numberBetween(2010, 2021)
         ];
     }
 }

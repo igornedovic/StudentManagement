@@ -26,7 +26,7 @@ class ChangeColumnSemesterDataTypeInExamsTable extends Migration
     public function down()
     {
         Schema::table('exams', function (Blueprint $table) {
-            //
+            $table->string('semester')->change();
         });
     }
 }
