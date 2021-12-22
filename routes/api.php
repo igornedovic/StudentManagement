@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,5 @@ Route::delete('/students/{id}', [StudentController::class, 'destroy']);
 
 Route::get('/exams', [ExamController::class, 'index']);
 Route::get('/exams/{id}', [ExamController::class, 'show']);
+
+Route::resource('grades', GradeController::class);
