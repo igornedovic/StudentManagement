@@ -12,7 +12,7 @@ class Student extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'index'
+        'index_number'
     ];
 
     public function grades()
