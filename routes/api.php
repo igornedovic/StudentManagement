@@ -39,6 +39,3 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
-
-// ([1-9][0-9]{0,2}|1000)\/(201[0-9]|202[0-1])
-

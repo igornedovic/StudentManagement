@@ -15,6 +15,7 @@ class UpdateGradesTable extends Migration
     {
         Schema::table('grades', function (Blueprint $table) {
             $table->id();
+            $table->unique(array('student_id', 'exam_id'));
         });
     }
 
