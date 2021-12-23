@@ -58,7 +58,7 @@ class StudentController extends Controller
             'index_number' => $request->index_number
         ]);
 
-        return response()->json(['Student created successfully', $student]);
+        return response()->json(['Student created successfully', $student], 200);
     }
 
     /**
@@ -99,6 +99,20 @@ class StudentController extends Controller
      */
     public function update(Request $request, $student_id)
     {
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:50',
+            'last_name' => 'required|string|max:50',
+            'index_number' => array(
+                'required',
+                'string',
+                'regex:/^([1-9][0-9]{0,2}|1000)\/(201[0-9]|202[0-1])/i'
+                )
+            ]);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
         $student = Student::find($student_id);
 
         if(is_null($student))
@@ -112,7 +126,7 @@ class StudentController extends Controller
         }
 
         $student->save();
-        return response()->json($student, 200);
+        return response()->json(['Student updated successfully', $student], 200);
     }
 
     /**
@@ -131,6 +145,6 @@ class StudentController extends Controller
         }
 
         $student->delete();
-        return response()->json("Successfully deleted", 200);
+        return response()->json("Student deleted successfully", 200);
     }
 }
